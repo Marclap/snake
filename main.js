@@ -1,4 +1,4 @@
-var s,
+let s,
     scl = 20,
     food
 

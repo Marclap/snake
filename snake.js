@@ -9,7 +9,7 @@ class Snake {
     }
     update() {
         if (this.total === this.tail.length) {
-            for (var i = 0; i < this.tail.length - 1; i++) {
+            for (let i = 0; i < this.tail.length - 1; i++) {
                 this.tail[i] = this.tail[i + 1]
             }
         }
@@ -21,31 +21,23 @@ class Snake {
     }
     show() {
         fill(240, 187, 98)
-        for (var i = 0; i < this.tail.length; i++) {
+        for (let i = 0; i < this.tail.length; i++) {
             rect(this.tail[i].x, this.tail[i].y, scl, scl)
         }
         rect(this.x, this.y, scl, scl)
     }
     dir(x, y) {
-        if (this.xSpeed == 1 && x != -1) {
+        if (this.xSpeed == 0 && x != 0) {
             this.xSpeed = x
             this.ySpeed = y
         }
-        if (this.xSpeed == -1 && x != 1) {
-            this.xSpeed = x
-            this.ySpeed = y
-        }
-        if (this.ySpeed == -1 && y != 1) {
-            this.xSpeed = x
-            this.ySpeed = y
-        }
-        if (this.ySpeed == 1 && y != -1) {
+        if (this.ySpeed == 0 && y != 0) {
             this.xSpeed = x
             this.ySpeed = y
         }
     }
     eat(pos) {
-        var d = dist(this.x, this.y, pos.x, pos.y)
+        let d = dist(this.x, this.y, pos.x, pos.y)
         if (d < 1) {
             this.total++
             return true
@@ -53,9 +45,9 @@ class Snake {
         return false
     }
     death() {
-        for (var i = 0; i < this.tail.length; i++) {
-            var pos = this.tail[i]
-            var d = dist(this.x, this.y, pos.x, pos.y)
+        for (let i = 0; i < this.tail.length; i++) {
+            let pos = this.tail[i]
+            let d = dist(this.x, this.y, pos.x, pos.y)
             if (d < 1) {
                 this.total = 0
                 this.tail = []
